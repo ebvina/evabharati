@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Eva Bharati — A universe of love, light, and forever moments." />
+    <meta name="theme-color" content="#ff6b9d" />
+    <title>Eva Bharati ♡ Forever Yours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Entrance Gate -->
+      <div id="entrance" class="entrance">
+        <div class="entrance-stars"></div>
+        <div class="entrance-content">
+          <div class="entrance-heart">♡</div>
+          <h1 class="entrance-title">Eva Bharati</h1>
+          <p class="entrance-sub">A universe written in pink, blue & forever</p>
+          <button id="enter-btn" class="enter-btn">
+            <span>Enter Our World</span>
+            <small>tap to begin the music & magic</small>
+          </button>
+        </div>
+      </div>
+
+      <!-- Three.js Canvas -->
+      <canvas id="canvas"></canvas>
+
+      <!-- Hidden YouTube Player -->
+      <div id="yt-player-container"></div>
+
+      <!-- UI Overlay -->
+      <div id="ui" class="ui hidden">
+        <!-- Hero -->
+        <header class="hero">
+          <p class="hero-eyebrow">for the one who colors my sky</p>
+          <h1 class="hero-name">Eva <span class="amp">&</span> Bharati</h1>
+          <p class="hero-tagline">Every moment with you feels like poetry in motion</p>
+        </header>
+
+        <!-- Photo Cinema -->
+        <section class="cinema" id="cinema">
+          <div class="cinema-frame">
+            <div class="cinema-glow"></div>
+            <img id="cinema-img" src="" alt="Eva — a beautiful moment" />
+            <div class="cinema-vignette"></div>
+            <div class="cinema-caption" id="cinema-caption"></div>
+          </div>
+          <div class="cinema-progress">
+            <div class="cinema-progress-bar" id="progress-bar"></div>
+          </div>
+        </section>
+
+        <!-- Love Letter -->
+        <section class="letter">
+          <div class="letter-card">
+            <div class="letter-deco">✦</div>
+            <h2>To My Eva</h2>
+            <p>
+              In a world of billions, my heart found its home in you. Your smile is the sunrise
+              I never want to miss, your laughter the melody that plays beneath every thought I have.
+            </p>
+            <p>
+              You are the pink in my sunsets and the blue in my endless sky — soft, radiant,
+              and impossibly beautiful. Every photo, every memory, every heartbeat whispers
+              the same truth: <em>I love you.</em>
+            </p>
+            <p class="letter-sign">Forever yours ♡</p>
+          </div>
+        </section>
+
+        <!-- Moments Grid -->
+        <section class="moments">
+          <h2 class="section-title">Our Moments</h2>
+          <p class="section-sub">Every frame, a chapter of us</p>
+          <div class="moments-grid" id="moments-grid"></div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact" id="contact">
+          <div class="contact-card">
+            <div class="contact-heart">💌</div>
+            <h2>Text Me Here</h2>
+            <p>Write from your heart — your words will find me at <strong>yourlove@evabharati.com</strong></p>
+            <form id="contact-form" action="https://formsubmit.co/yourlove@evabharati.com" method="POST">
+              <input type="hidden" name="_subject" value="A message from Eva ♡" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="text" name="_honey" style="display:none" />
+              <div class="form-group">
+                <input type="text" name="name" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <textarea name="message" rows="5" placeholder="Write what your heart wants to say..." required></textarea>
+              </div>
+              <button type="submit" class="submit-btn">
+                <span>Send With Love</span>
+              </button>
+            </form>
+            <p id="form-status" class="form-status"></p>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <p>evabharati.com — made with infinite love</p>
+          <p class="footer-heart">♡</p>
+        </footer>
+
+        <!-- Music Controls -->
+        <div class="music-controls">
+          <button id="music-toggle" class="music-btn" title="Toggle music">
+            <span id="music-icon">🎵</span>
+          </button>
+          <div class="music-info">
+            <span id="now-playing">Now playing...</span>
+            <button id="next-song" class="next-btn" title="Next song">⏭</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
