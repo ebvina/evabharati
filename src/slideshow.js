@@ -4,9 +4,11 @@ const SLIDE_DURATION = 5000;
 
 export function initSlideshow() {
   const img = document.getElementById('cinema-img');
+  const bg = document.getElementById('cinema-bg');
   const caption = document.getElementById('cinema-caption');
   const progressBar = document.getElementById('progress-bar');
   const grid = document.getElementById('moments-grid');
+  const cinema = document.getElementById('cinema');
 
   let current = 0;
   let startTime = 0;
@@ -20,6 +22,7 @@ export function initSlideshow() {
     card.addEventListener('click', () => {
       current = i;
       showSlide(true);
+      cinema.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
     grid.appendChild(card);
   });
@@ -36,6 +39,7 @@ export function initSlideshow() {
     void img.offsetWidth;
 
     img.src = photo.src;
+    bg.src = photo.src;
     caption.textContent = photo.caption;
     caption.classList.add('visible');
 

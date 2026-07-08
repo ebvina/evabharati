@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="Eva Bharati — A universe of love, light, and forever moments." />
     <meta name="theme-color" content="#ff6b9d" />
     <title>Eva Bharati ♡ Forever Yours</title>
@@ -48,6 +48,7 @@
         <section class="cinema" id="cinema">
           <div class="cinema-frame">
             <div class="cinema-glow"></div>
+            <img id="cinema-bg" src="" alt="" aria-hidden="true" />
             <img id="cinema-img" src="" alt="Eva — a beautiful moment" />
             <div class="cinema-vignette"></div>
             <div class="cinema-caption" id="cinema-caption"></div>
@@ -87,20 +88,16 @@
           <div class="contact-card">
             <div class="contact-heart">💌</div>
             <h2>Text Me Here</h2>
-            <p>Write from your heart — your words will find me at <strong>yourlove@evabharati.com</strong></p>
-            <form id="contact-form" action="https://formsubmit.co/yourlove@evabharati.com" method="POST">
-              <input type="hidden" name="_subject" value="A message from Eva ♡" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="text" name="_honey" style="display:none" />
+            <p>Write from your heart — it opens your mail app and sends straight to <strong>yourlove@evabharati.com</strong></p>
+            <form id="contact-form">
               <div class="form-group">
-                <input type="text" name="name" placeholder="Your name" required />
+                <input type="text" id="sender-name" name="name" placeholder="Your name" required />
               </div>
               <div class="form-group">
-                <textarea name="message" rows="5" placeholder="Write what your heart wants to say..." required></textarea>
+                <textarea id="sender-message" name="message" rows="5" placeholder="Write what your heart wants to say..." required></textarea>
               </div>
               <button type="submit" class="submit-btn">
-                <span>Send With Love</span>
+                <span>Send With Love 💌</span>
               </button>
             </form>
             <p id="form-status" class="form-status"></p>
@@ -118,10 +115,7 @@
           <button id="music-toggle" class="music-btn" title="Toggle music">
             <span id="music-icon">🎵</span>
           </button>
-          <div class="music-info">
-            <span id="now-playing">Now playing...</span>
-            <button id="next-song" class="next-btn" title="Next song">⏭</button>
-          </div>
+          <span id="now-playing">Our Song ♡</span>
         </div>
       </div>
     </div>

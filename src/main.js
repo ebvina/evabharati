@@ -1,9 +1,9 @@
 import './style.css';
 import * as THREE from 'three';
 import { createScene } from './scene.js';
-import { initMusic, startMusic, toggleMusic, nextSong } from './music.js';
+import { initMusic, startMusic, toggleMusic } from './music.js';
 import { initSlideshow } from './slideshow.js';
-import { PHOTOS } from './config.js';
+import { PHOTOS, CONTACT_EMAIL } from './config.js';
 
 const canvas = document.getElementById('canvas');
 const entrance = document.getElementById('entrance');
@@ -11,17 +11,15 @@ const ui = document.getElementById('ui');
 const enterBtn = document.getElementById('enter-btn');
 const musicToggle = document.getElementById('music-toggle');
 const musicIcon = document.getElementById('music-icon');
-const nowPlaying = document.getElementById('now-playing');
-const nextSongBtn = document.getElementById('next-song');
 const contactForm = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
 
 // Three.js scene
 const scene3d = createScene(canvas);
 
-// Load textures for 3D photo frames (first 8 photos)
+// Load textures for 3D photo frames (10 photos in the carousel ring)
 const loader = new THREE.TextureLoader();
-PHOTOS.slice(0, 8).forEach((photo) => {
+PHOTOS.slice(0, 10).forEach((photo) => {
   loader.load(photo.src, (texture) => {
     texture.colorSpace = THREE.SRGBColorSpace;
     scene3d.addPhotoFrame(texture);
@@ -29,9 +27,7 @@ PHOTOS.slice(0, 8).forEach((photo) => {
 });
 
 // Music
-initMusic((song) => {
-  nowPlaying.textContent = song.title;
-});
+initMusic();
 
 // Entrance
 enterBtn.addEventListener('click', () => {
@@ -47,34 +43,18 @@ musicToggle.addEventListener('click', () => {
   musicIcon.textContent = playing ? '🎵' : '🔇';
 });
 
-nextSongBtn.addEventListener('click', () => {
-  nextSong();
-});
-
-// Contact form via FormSubmit AJAX
-contactForm.addEventListener('submit', async (e) => {
+// Contact: open the mail app directly with a pre-filled love letter
+contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  formStatus.textContent = 'Sending your love...';
-  formStatus.className = 'form-status';
 
-  const formData = new FormData(contactForm);
+  const name = document.getElementById('sender-name').value.trim();
+  const message = document.getElementById('sender-message').value.trim();
 
-  try {
-    const res = await fetch(contactForm.action, {
-      method: 'POST',
-      body: formData,
-      headers: { Accept: 'application/json' },
-    });
+  const subject = encodeURIComponent(`A message from ${name} ♡`);
+  const body = encodeURIComponent(`${message}\n\n— ${name}`);
 
-    if (res.ok) {
-      formStatus.textContent = 'Your message has been sent with love ♡';
-      formStatus.className = 'form-status success';
-      contactForm.reset();
-    } else {
-      throw new Error('Failed');
-    }
-  } catch {
-    formStatus.textContent = 'Could not send — please try again or email directly';
-    formStatus.className = 'form-status error';
-  }
+  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+
+  formStatus.textContent = 'Opening your mail app... ♡';
+  formStatus.className = 'form-status success';
 });

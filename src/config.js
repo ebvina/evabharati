@@ -25,10 +25,9 @@ export const PHOTOS = Array.from({ length: 19 }, (_, i) => ({
   caption: CAPTIONS[i % CAPTIONS.length],
 }));
 
-export const SONGS = [
-  { id: 'ZXVeqXpKuU8', title: 'Our Song ♡' },
-  { id: 'BWdpEGv2XXA', title: 'Love in the Air' },
-  { id: 'AKh_lqmmgtQ', title: 'Hearts Aligned' },
-  { id: 'l1pHRTFkKKs', title: 'Forever Yours' },
-  { id: 'Sh8ZYHnb86c', title: 'Eternal Melody' },
-];
+export const SONG = {
+  id: 'q29MxRthrVM',
+  title: 'Our Song ♡',
+};
+
+export const CONTACT_EMAIL = 'yourlove@evabharati.com';
