@@ -1,8 +1,3 @@
-export const PHOTOS = Array.from({ length: 19 }, (_, i) => ({
-  src: `./photos/eva-${String(i + 1).padStart(2, '0')}.png`,
-  caption: CAPTIONS[i % CAPTIONS.length],
-}));
-
 const CAPTIONS = [
   'The moment my world became brighter ✦',
   'Your smile — my favorite constellation',
@@ -24,6 +19,11 @@ const CAPTIONS = [
   'Forever starts with you',
   'The most beautiful story ever told',
 ];
+
+export const PHOTOS = Array.from({ length: 19 }, (_, i) => ({
+  src: `./photos/eva-${String(i + 1).padStart(2, '0')}.png`,
+  caption: CAPTIONS[i % CAPTIONS.length],
+}));
 
 export const SONGS = [
   { id: 'ZXVeqXpKuU8', title: 'Our Song ♡' },
