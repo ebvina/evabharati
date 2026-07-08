@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Eva Bharati — A universe of love, light, and forever moments." />
+    <meta name="theme-color" content="#ff6b9d" />
+    <title>Eva Bharati ♡ A Universe of Her Own</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="./assets/index-jxBZxQSe.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-D5Poeb85.css">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Entrance Gate -->
+      <div id="entrance" class="entrance">
+        <div class="entrance-stars"></div>
+        <div class="entrance-content">
+          <div class="entrance-heart">♡</div>
+          <h1 class="entrance-title">Eva Bharati</h1>
+          <p class="entrance-sub">A universe written in pink, blue & forever</p>
+          <button id="enter-btn" class="enter-btn">
+            <span>Enter Her Universe</span>
+            <small>tap to begin the music & magic</small>
+          </button>
+        </div>
+      </div>
+
+      <!-- Three.js Canvas -->
+      <canvas id="canvas"></canvas>
+
+      <!-- Hidden YouTube Player -->
+      <div id="yt-player-container"></div>
+
+      <!-- UI Overlay -->
+      <div id="ui" class="ui hidden">
+        <!-- Hero -->
+        <header class="hero">
+          <p class="hero-eyebrow">somewhere in this universe, there is her</p>
+          <h1 class="hero-name">Eva Bharati</h1>
+          <p class="hero-tagline">Some people are not moments — they are entire galaxies</p>
+        </header>
+
+        <!-- Photo Cinema -->
+        <section class="cinema" id="cinema">
+          <div class="cinema-frame">
+            <div class="cinema-glow"></div>
+            <img id="cinema-bg" src="" alt="" aria-hidden="true" />
+            <img id="cinema-img" src="" alt="Eva — a beautiful moment" />
+            <div class="cinema-vignette"></div>
+            <div class="cinema-caption" id="cinema-caption"></div>
+          </div>
+          <div class="cinema-progress">
+            <div class="cinema-progress-bar" id="progress-bar"></div>
+          </div>
+        </section>
+
+        <!-- Love Letter -->
+        <section class="letter">
+          <div class="letter-card">
+            <div class="letter-deco">✦</div>
+            <h2>Eva</h2>
+            <p>
+              The universe scattered a billion stars across the sky, and somehow still had
+              enough light left to make her. Her smile could quietly rearrange a whole day,
+              and she would never even know it.
+            </p>
+            <p>
+              She is the pink in every sunset and the blue in every endless sky — soft,
+              radiant, and impossibly beautiful. This page asks for nothing. It simply
+              exists, the way the moon exists for the ocean: <em>from a distance, in awe.</em>
+            </p>
+            <p class="letter-sign">— written under her sky ♡</p>
+          </div>
+        </section>
+
+        <!-- Moments Grid -->
+        <section class="moments">
+          <h2 class="section-title">Moments of Eva</h2>
+          <p class="section-sub">Every frame, a star in her constellation</p>
+          <div class="moments-grid" id="moments-grid"></div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact" id="contact">
+          <div class="contact-card">
+            <div class="contact-heart">💌</div>
+            <h2>Send a Message to the Stars</h2>
+            <p>If any of this ever reaches her — it opens your mail app and sends straight to <strong>yourlove@evabharati.com</strong></p>
+            <form id="contact-form">
+              <div class="form-group">
+                <input type="text" id="sender-name" name="name" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <textarea id="sender-message" name="message" rows="5" placeholder="Write what your heart wants to say..." required></textarea>
+              </div>
+              <button type="submit" class="submit-btn">
+                <span>Send With Love 💌</span>
+              </button>
+            </form>
+            <p id="form-status" class="form-status"></p>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <p>evabharati.com — a small corner of the universe, kept for her</p>
+          <p class="footer-heart">♡</p>
+        </footer>
+
+        <!-- Music Controls -->
+        <div class="music-controls">
+          <button id="music-toggle" class="music-btn" title="Toggle music">
+            <span id="music-icon">🎵</span>
+          </button>
+          <span id="now-playing">Her Song ♡</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
