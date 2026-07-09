@@ -59,19 +59,15 @@ contactForm.addEventListener('submit', (e) => {
   const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${subject}&body=${body}`;
 
-  const link = document.createElement('a');
-  link.href = mailtoUrl;
-  link.style.display = 'none';
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
+  // Gmail compose opens directly — works everywhere, no mail app needed
+  window.open(gmailUrl, '_blank', 'noopener');
 
   formStatus.className = 'form-status success';
   formStatus.innerHTML = `
-    Opening your mail app... ♡<br />
+    Opening Gmail with your message... ♡<br />
     <span class="form-fallback">
-      Nothing happened?
-      <a href="${gmailUrl}" target="_blank" rel="noopener">Open in Gmail</a>
+      Prefer another way?
+      <a href="${mailtoUrl}">Use your mail app</a>
       or
       <button type="button" id="copy-mail-btn">copy the message</button>
     </span>
