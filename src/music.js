@@ -1,6 +1,7 @@
-import { SONG } from './config.js';
+import { SONGS } from './config.js';
 
 let player = null;
+let currentIndex = 0;
 let isPlaying = false;
 let apiReady = false;
 const queue = [];
@@ -28,7 +29,7 @@ function createPlayer() {
   player = new window.YT.Player('yt-player-container', {
     height: '1',
     width: '1',
-    videoId: SONG.id,
+    videoId: SONGS[0].id,
     playerVars: {
       autoplay: 0,
       controls: 0,
@@ -37,16 +38,19 @@ function createPlayer() {
       modestbranding: 1,
       rel: 0,
       playsinline: 1,
-      loop: 1,
-      playlist: SONG.id,
     },
     events: {
       onStateChange: (event) => {
-        // Safety net: restart if loop param is ignored
+        // One after another, looping back to the first
         if (event.data === window.YT.PlayerState.ENDED) {
-          player.seekTo(0);
-          player.playVideo();
+          currentIndex = (currentIndex + 1) % SONGS.length;
+          player.loadVideoById(SONGS[currentIndex].id);
         }
+      },
+      onError: () => {
+        // Skip unplayable videos so the loop never stalls
+        currentIndex = (currentIndex + 1) % SONGS.length;
+        player.loadVideoById(SONGS[currentIndex].id);
       },
     },
   });

@@ -61,7 +61,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(ellipse at 30% 20%, #1a0a2e 0%, #0a0612 50%, #0d1b3e 100%);
+  /* Translucent so the Three.js universe glows through */
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(16, 8, 32, 0.30) 0%,
+    rgba(10, 6, 18, 0.55) 60%,
+    rgba(13, 27, 62, 0.45) 100%
+  );
   transition: opacity 1.2s ease, visibility 1.2s ease;
 }
 
@@ -102,11 +108,25 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+.entrance-content {
+  position: relative;
+}
+
+.entrance-content::before {
+  content: '';
+  position: absolute;
+  inset: -20% -15%;
+  background: radial-gradient(ellipse at center, rgba(255, 107, 157, 0.14), transparent 65%);
+  filter: blur(10px);
+  z-index: -1;
+  animation: glowPulse 4s ease-in-out infinite alternate;
+}
+
 .entrance-heart {
   font-size: clamp(3rem, 8vw, 4rem);
   color: var(--pink);
   animation: heartbeat 1.5s ease-in-out infinite;
-  text-shadow: 0 0 40px var(--pink-glow);
+  text-shadow: 0 0 40px var(--pink-glow), 0 0 90px var(--pink-glow);
   margin-bottom: 1rem;
 }
 
@@ -121,12 +141,28 @@ body {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.2rem, 9vw, 5rem);
   font-weight: 400;
-  background: linear-gradient(135deg, var(--pink-light), var(--blue), var(--lavender));
+  background: linear-gradient(120deg, var(--pink-light), #fff, var(--blue), var(--lavender), var(--pink-light));
+  background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
+  animation: shimmer 7s linear infinite;
+}
+
+@keyframes shimmer {
+  from { background-position: 0% 50%; }
+  to { background-position: 300% 50%; }
+}
+
+.entrance-hint {
+  margin-top: 2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  color: rgba(248, 240, 255, 0.5);
+  animation: twinkle 3s ease-in-out infinite alternate;
 }
 
 .entrance-sub {
