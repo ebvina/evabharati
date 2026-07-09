@@ -30,6 +30,7 @@ export const SONGS = [
   { id: '0_sZlZn8aLY', title: 'Song for Her ♡' },
   { id: '_Tk9_kPpO1U', title: 'Song for Her ♡' },
   { id: 'DZ4BtMpaJaU', title: 'Song for Her ♡' },
+  { id: 'kEbcHhNsRoU', title: 'Song for Her ♡' },
 ];
 
 export const CONTACT_EMAIL = 'yourlove@evabharati.com';
