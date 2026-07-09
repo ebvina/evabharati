@@ -26,7 +26,7 @@ export const PHOTOS = Array.from({ length: 19 }, (_, i) => ({
 }));
 
 export const SONG = {
-  id: 'q29MxRthrVM',
+  id: '0_sZlZn8aLY',
   title: 'Her Song ♡',
 };
 
