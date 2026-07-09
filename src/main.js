@@ -43,18 +43,47 @@ musicToggle.addEventListener('click', () => {
   musicIcon.textContent = playing ? '🎵' : '🔇';
 });
 
-// Contact: open the mail app directly with a pre-filled love letter
+// Contact: open the mail app directly with a pre-filled love letter.
+// Falls back to Gmail / copy when no mail app is configured (common on desktop).
 contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const name = document.getElementById('sender-name').value.trim();
   const message = document.getElementById('sender-message').value.trim();
 
-  const subject = encodeURIComponent(`A message from ${name} ♡`);
-  const body = encodeURIComponent(`${message}\n\n— ${name}`);
+  const subjectRaw = `A message from ${name} ♡`;
+  const bodyRaw = `${message}\n\n— ${name}`;
+  const subject = encodeURIComponent(subjectRaw);
+  const body = encodeURIComponent(bodyRaw);
 
-  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${subject}&body=${body}`;
 
-  formStatus.textContent = 'Opening your mail app... ♡';
+  const link = document.createElement('a');
+  link.href = mailtoUrl;
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
   formStatus.className = 'form-status success';
+  formStatus.innerHTML = `
+    Opening your mail app... ♡<br />
+    <span class="form-fallback">
+      Nothing happened?
+      <a href="${gmailUrl}" target="_blank" rel="noopener">Open in Gmail</a>
+      or
+      <button type="button" id="copy-mail-btn">copy the message</button>
+    </span>
+  `;
+
+  document.getElementById('copy-mail-btn').addEventListener('click', async () => {
+    const text = `To: ${CONTACT_EMAIL}\nSubject: ${subjectRaw}\n\n${bodyRaw}`;
+    try {
+      await navigator.clipboard.writeText(text);
+      document.getElementById('copy-mail-btn').textContent = 'copied ♡';
+    } catch {
+      window.prompt('Copy this message:', text);
+    }
+  });
 });

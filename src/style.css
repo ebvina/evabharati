@@ -610,6 +610,29 @@ body {
   color: #fca5a5;
 }
 
+.form-fallback {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.form-fallback a {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.form-fallback button {
+  background: none;
+  border: none;
+  color: var(--pink-light);
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+}
+
 /* ─── Footer ─── */
 .footer {
   text-align: center;
