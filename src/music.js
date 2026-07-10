@@ -1,10 +1,32 @@
 import { SONGS } from './config.js';
 
+// Pick a random starting song each load, avoiding the one that played last time
+function pickStartIndex() {
+  if (SONGS.length <= 1) return 0;
+  let last = -1;
+  try {
+    last = parseInt(localStorage.getItem('eva_last_song'), 10);
+  } catch {
+    last = -1;
+  }
+  let idx = Math.floor(Math.random() * SONGS.length);
+  if (idx === last) idx = (idx + 1) % SONGS.length;
+  return idx;
+}
+
 let player = null;
-let currentIndex = 0;
+let currentIndex = pickStartIndex();
 let isPlaying = false;
 let apiReady = false;
 const queue = [];
+
+function remember(idx) {
+  try {
+    localStorage.setItem('eva_last_song', String(idx));
+  } catch {
+    /* storage unavailable — ignore */
+  }
+}
 
 export function initMusic() {
   if (window.YT && window.YT.Player) {
@@ -26,10 +48,11 @@ export function initMusic() {
 }
 
 function createPlayer() {
+  remember(currentIndex);
   player = new window.YT.Player('yt-player-container', {
     height: '1',
     width: '1',
-    videoId: SONGS[0].id,
+    videoId: SONGS[currentIndex].id,
     playerVars: {
       autoplay: 0,
       controls: 0,
@@ -41,7 +64,7 @@ function createPlayer() {
     },
     events: {
       onStateChange: (event) => {
-        // One after another, looping back to the first
+        // One after another, looping back around
         if (event.data === window.YT.PlayerState.ENDED) {
           currentIndex = (currentIndex + 1) % SONGS.length;
           player.loadVideoById(SONGS[currentIndex].id);
